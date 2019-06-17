@@ -2,7 +2,7 @@
 
 1. Hash map breakdown: {"workabledemo.com/api/accounts/3"=>4378, "www.workabledemo.com/user_password_resets"=>1, "www.workabledemo.com/petitions"=>1, "www.workabledemo.com/accounts"=>1, "sampleco.workabledemo.com/backend/subscription/update_billing"=>1, "www.workabledemo.com/uas/request-password-reset?trk=uas-resetpass"=>1}
 2. 6.64ms (just counting service, not counting connect)
-3. delayed jobs =  8370
+3. delayed_jobs was accessed the most (8370 times)
 4. Yes, if a request has an HTTP status code in the 300s it means it was a server redirect. 302 possibilities: user tried to access a link when they were not authorized/authenticated. Hence redirect to /signin page. perhaps a user completed an action, the request with a 302 or 304 is sent back to make sure the current user is looking at the most up to date version. If 302/304, nothing has changed. therefore use the cached version of what the user WAS looking at. Perhaps a user is accessing an HOC that checks for oAuth with another service, they're still valid means they can use the cache version of whatever they were looking at.
 5. Yes, 5 server errors (status 500 and 503). Why?
 - `desc="Request Interrupted"`
