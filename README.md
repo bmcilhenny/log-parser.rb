@@ -7,8 +7,6 @@
 5. Yes, 5 server errors (status 500 and 503). Why?
 - `desc="Request Interrupted"`
 - `ActionView::MissingTemplate:Missing template backend/reports/detailed_export, backend/base/detailed_export, application/detailed_export`
-- heroku/router does not do any SQL
-- web/app.1 and .2 do do SQL, though not every request is SQL
-- heroku has what are called web dynos and work dynos
-- app/web.2 represents a web dyno, sends a success message upon receiving then does
+- heroku/router does not do any SQL, web/app.1 and .2 do SQL, though not every request is SQL
+- heroku has what are called web dynos and work dynos, app/web.2 represents a web dyno, sends a success message upon receiving then does
 - I looked at the log with id `443751935414394888` and the ones directly above to get a context. According to the SQL queries the exportation of the background report was "delayed", meaning this job has been put in the queue of jobs the dyno is working on and user has tried to access it but it is not ready yet.
