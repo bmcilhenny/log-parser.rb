@@ -2,7 +2,7 @@
 
 1. 404 Hash map breakdown: {"workabledemo.com/api/accounts/3"=>4378, "www.workabledemo.com/user_password_resets"=>1, "www.workabledemo.com/petitions"=>1, "www.workabledemo.com/accounts"=>1, "sampleco.workabledemo.com/backend/subscription/update_billing"=>1, "www.workabledemo.com/uas/request-password-reset?trk=uas-resetpass"=>1}
 - I iterated through each line. Used a regex to find status=404. Then used a regex to grab the path. Added that path as a key in a hash and incremented that key's value by 1 for every occurence.
-2. 6.64ms (just counting service, not counting connect). 
+2. 48.83ms (just counting service, not counting connect). 
 - I took all the lines that had a service (), and from those lines I took the value that came after service= with a regex and added that to the running total. Once I iterated through all the lines I divided that running total by the amount of lines that had a service (heroku/router) then had a avg time.
 3. delayed_jobs was accessed the most (8370 times). 
 - I used a regular expression to grab the text that followed FROM and created a key in a has then incremented that value by 1 for each occurence of the word.
